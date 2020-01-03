@@ -6,4 +6,3 @@ thaad = bts.THAAD("kill_pages.txt", logfile)
 
 while True:
     thaad.run_thaad()
-    time.sleep(3)

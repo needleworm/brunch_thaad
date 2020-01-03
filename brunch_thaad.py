@@ -20,26 +20,29 @@ class THAAD():
                 print(line)
                 self.targets.append(line.strip() + "#comments")
         blacklist.close()
+
     def run_thaad(self):
         log = open(self.log_output, 'w')
         for el in self.targets:
-            self.driver.get(el)
-            time.sleep(5)
-            self.driver.get(el)
-            replies = self.driver.find_elements_by_class_name("desc_comment")
-            if len(replies) == 0:
-                continue
-            del_buttons = self.driver.find_elements_by_class_name("btn_delete")
-            ids = self.driver.find_elements_by_class_name("link_userid")
-            # screen by contents
-            for i, el in enumerate(replies):
-                if "http" in el.text or "clien" in el.text:
-                    self.count += 1
-                    line = time.ctime() + "\nUser Id is : " + ids[i].text + "\nContent is :\n" + el.text + "\n"
-                    el.click()
-                    del_buttons[i].click()
-                    self.driver.switch_to.alert.accept()
-                    print(line)
-                    log.write(line)
-
+            try:
+                self.driver.get(el)
+                time.sleep(5)
+                self.driver.get(el)
+                replies = self.driver.find_elements_by_class_name("desc_comment")
+                if len(replies) == 0:
+                    continue
+                del_buttons = self.driver.find_elements_by_class_name("btn_delete")
+                ids = self.driver.find_elements_by_class_name("link_userid")
+                # screen by contents
+                for i, el in enumerate(replies):
+                    if "쿠앙" in ids[i].text or "clien" in el.text:
+                        self.count += 1
+                        line = time.ctime() + "\nUser Id is : " + ids[i].text + "\nContent is :\n" + el.text + "\n"
+                        el.click()
+                        del_buttons[i].click()
+                        self.driver.switch_to.alert.accept()
+                        print(line)
+                        log.write(line)
+            except:
+                print("error occured")
         log.close()
