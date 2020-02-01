@@ -26,7 +26,7 @@ class THAAD():
         for el in self.targets:
             try:
                 self.driver.get(el)
-                time.sleep(5)
+                time.sleep(3)
                 self.driver.get(el)
                 replies = self.driver.find_elements_by_class_name("desc_comment")
                 if len(replies) == 0:
@@ -35,7 +35,7 @@ class THAAD():
                 ids = self.driver.find_elements_by_class_name("link_userid")
                 # screen by contents
                 for i, el in enumerate(replies):
-                    if "쿠앙" in ids[i].text or "clien" in el.text:
+                    if "쿠앙" in ids[i].text or "clien" in el.text or "http" in el.text:
                         self.count += 1
                         line = time.ctime() + "\nUser Id is : " + ids[i].text + "\nContent is :\n" + el.text + "\n"
                         el.click()
