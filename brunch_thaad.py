@@ -50,7 +50,6 @@ class THAAD():
                     for i in range(30):
                         elm.click()
                         del_button = elm.find_elements_by_tag_name("button")[-1]
-                        print(del_button.text)
                         if "삭제" in del_button.text:
                             del_button.click()
                             self.driver.switch_to.alert.accept()
@@ -58,6 +57,5 @@ class THAAD():
                             print("Deleted Success")
                             break
                         self.driver.find_element_by_tag_name("body").send_keys(Keys.PAGE_DOWN)
-                    print("2")
                     print(del_button.text)
         log.close()
