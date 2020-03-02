@@ -1,7 +1,7 @@
 import brunch_thaad as bts
 import time
 
-logfile = str(time.time()) + "txt"
+logfile = str(time.time()) + ".txt"
 id = "<brunch id>"
 ps = "<password>"
 Kill_keywords = ["keywords here"]
