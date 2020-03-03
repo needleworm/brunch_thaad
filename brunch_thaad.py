@@ -10,7 +10,7 @@ class THAAD():
         self.kill_keywords = kill_keywords
         self.options = Options()
         self.options.add_argument("headless")
-        self.options.add_argument("window-size=1920x1080")
+        self.options.add_argument("--window-size=848,1500")
         #self.options.add_argument("disable-gpu")
         self.driver = webdriver.Chrome(executable_path="chromedriver.exe", chrome_options=self.options)
         self.login_url = "https://accounts.kakao.com/login?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fclient_id%3De0201caea90cafbb237e250f63a519b5%26response_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fbrunch.co.kr%252Fcallback%252Fauth%252Fkakao%26scope%3D%26state%3DaHR0cHM6Ly9icnVuY2guY28ua3IvL3NpZ25pbi9maW5pc2g_dXJsPSUyRg%26grant_type%3Dauthorization_code"
